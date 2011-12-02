@@ -33,6 +33,7 @@ public class ChatClient extends JFrame implements ActionListener{
 	ObjectOutputStream output;//socket IO
 	ObjectInputStream input;
 	
+	//thread to handle the received messages..
 	ClientReceive recvThread;
 
 	//construct the menu bar
@@ -70,7 +71,7 @@ public class ChatClient extends JFrame implements ActionListener{
 	GridBagConstraints girdBagCon;
 	
 	public ChatClient(){//CTOR..
-		init();//prog initialization
+		init();//initialization, construct the window interface
 
 		//close operation for frame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +89,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		//icon
 		icon = getImage("icon.gif");
 		this.setIconImage(icon); //set icon
-		show();
+		this.setVisible(true);//bring the window up!!
 
 		//hot key'V'
 		operateMenu.setMnemonic('O');
@@ -198,7 +199,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		exitButton.addActionListener(this);
 		
 		combobox = new JComboBox();
-		combobox.insertItemAt("All",0);
+		combobox.insertItemAt("all",0);
 		combobox.setSelectedIndex(0);
 		
 		messageShow = new JTextArea();
@@ -317,6 +318,7 @@ public class ChatClient extends JFrame implements ActionListener{
 			new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
 					if(type == 1){
+						//if still connected, disconnect it
 						DisConnect();
 					}
 					System.exit(0);
@@ -334,15 +336,17 @@ public class ChatClient extends JFrame implements ActionListener{
 		if (obj == userItem || obj == userButton) { //user config
 			//pop out the userConf window
 			UserConf userConf = new UserConf(this,userName);
-			userConf.show();
+			userConf.setVisible(true);
 			userName = userConf.userInputName;
 		}
 		else if (obj == connectItem || obj == connectButton) { //connection config
 			//pop up the window
 			ConnectConf conConf = new ConnectConf(this,ip,port);
-			conConf.show();
+			conConf.setVisible(true);
+			//change the new ip & port number to user specified
 			ip = conConf.userInputIp;
 			port = conConf.userInputPort;
+			
 		}
 		else if (obj == loginItem || obj == loginButton) { //login
 			Connect();
@@ -369,8 +373,8 @@ public class ChatClient extends JFrame implements ActionListener{
 		}
 		else if (obj == helpItem) { //help for menu bar
 			//pop up help window
-			Help helpDialog = new Help(this);
-			helpDialog.show();
+			Help helpDialog = new Help(this);;
+			helpDialog.setVisible(true);
 		}
 	}
 
@@ -391,7 +395,7 @@ public class ChatClient extends JFrame implements ActionListener{
 			output = new ObjectOutputStream(socket.getOutputStream());
 			output.flush();
 			input  = new ObjectInputStream(socket.getInputStream() );
-			
+			//let the server know my username, this is important
 			output.writeObject(userName);
 			output.flush();
 			
@@ -433,7 +437,7 @@ public class ChatClient extends JFrame implements ActionListener{
 			return ;
 		}
 		
-		try{
+		try{ //tell the server that I am leaving..
 			output.writeObject("userLeft");
 			output.flush();
 		

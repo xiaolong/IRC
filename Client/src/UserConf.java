@@ -13,8 +13,7 @@ public class UserConf extends JDialog {
 	JPanel panelUserConf = new JPanel();
 	JButton save = new JButton();
 	JButton cancel = new JButton();
-	JLabel DLGINFO=new JLabel(
-		"                  default user:xiaolong");
+	JLabel DLGINFO=new JLabel("     default user:xiaolong");
 
 	JPanel panelSave = new JPanel();
 	JLabel message = new JLabel();
@@ -67,13 +66,12 @@ public class UserConf extends JDialog {
 			new ActionListener() {
 				public void actionPerformed (ActionEvent a) {
 					if(userName.getText().equals("")){
-						DLGINFO.setText(
-							"                               username cant be empty!");
+						DLGINFO.setText(" username cant be empty!");
 						userName.setText(userInputName);
 						return;
 					}
 					else if(userName.getText().length() > 15){
-						DLGINFO.setText("                  username length cant exceed 15!");
+						DLGINFO.setText(" username length cant exceed 15!");
 						userName.setText(userInputName);
 						return;
 					}
@@ -87,7 +85,7 @@ public class UserConf extends JDialog {
 		this.addWindowListener(
 			new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
-					DLGINFO.setText("                         default user is :xiaolong");
+					//DLGINFO.setText(" default user is :xiaolong");
 				}
 			}
 		);
@@ -96,7 +94,7 @@ public class UserConf extends JDialog {
 		cancel.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					DLGINFO.setText("                        default user is :xiaolong");
+					//DLGINFO.setText(" default user is :xiaolong");
 					dispose();
 				}
 			}

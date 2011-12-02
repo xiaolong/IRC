@@ -37,7 +37,7 @@ public class Help extends JDialog {
 	}
 
 	private void jbInit() throws Exception {
-		this.setSize(new Dimension(350, 270));
+		this.setSize(new Dimension(500, 270));
 		this.setTitle("help");
 		
 		titlePanel.setBackground(bg);;
@@ -45,12 +45,11 @@ public class Help extends JDialog {
 		closePanel.setBackground(bg);
 		
 		help.setText("1 specify server address and port"+
-			"(default config is    127.0.0.1:8888)\n"+
+			"(default config is 127.0.0.1:8888)\n"+
 			"2 specify your username (default: xiaolong)\n"+
 			"3 click login to connect \n"+
 			"     click logoff to unconnect \n"+
-			"4 choose the msg receiver \n"+
-			"      and choose your mode and send\n");
+			"4 choose the msg receiver ,type in text and send \n");
 		help.setEditable(false);
 
 		titlePanel.add(new Label("              "));

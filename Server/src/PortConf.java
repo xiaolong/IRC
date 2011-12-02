@@ -38,7 +38,7 @@ public class PortConf extends JDialog {
 	private void jbInit() throws Exception {
 		this.setSize(new Dimension(300, 200));
 		this.setTitle("port configure");
-		message.setText("please enter the port number to listen:");
+		message.setText("port to listen to:");
 		portNumber = new JTextField(10);
 		portNumber.setText(""+ChatServer.port);
 		save.setText("save");
@@ -69,7 +69,7 @@ public class PortConf extends JDialog {
 						savePort=Integer.parseInt(PortConf.portNumber.getText());
 
 						if(savePort<1 || savePort>65535){
-							PortConf.DLGINFO.setText("             port number must be integer between 0 and 65535!");
+							PortConf.DLGINFO.setText(" port number must be integer between 0 and 65535!");
 							PortConf.portNumber.setText("");
 							return;
 						}
@@ -77,7 +77,7 @@ public class PortConf extends JDialog {
 						dispose();
 					}
 					catch(NumberFormatException e){
-						PortConf.DLGINFO.setText("               wrong port number, please enter an integer!");
+						PortConf.DLGINFO.setText(" wrong port number, please enter an integer!");
 						PortConf.portNumber.setText("");
 						return;
 					}
@@ -85,20 +85,20 @@ public class PortConf extends JDialog {
 			}
 		);
 
-		//¹Ø±Õ¶Ô»°¿òÊ±µÄ²Ù×÷
+		//
 		this.addWindowListener(
 			new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
-					DLGINFO.setText("                             default port:8888");
+					DLGINFO.setText("  default port:8888");
 				}
 			}
 		);
 
-		//È¡Ïû°ŽÅ¥µÄÊÂŒþŽŠÀí
+		//
 		cancel.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					DLGINFO.setText("                             default port:8888");
+					DLGINFO.setText("  default port:8888");
 					dispose();
 				}
 			}

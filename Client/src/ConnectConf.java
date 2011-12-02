@@ -14,7 +14,7 @@ public class ConnectConf extends JDialog {
 	JButton save = new JButton();
 	JButton cancel = new JButton();
 	JLabel DLGINFO=new JLabel(
-		"                 default configure is:  127.0.0.1:8888");
+		" default configure is:  127.0.0.1:8888");
 
 	JPanel panelSave = new JPanel();
 	JLabel message = new JLabel();
@@ -25,7 +25,7 @@ public class ConnectConf extends JDialog {
 	JTextField inputIp;
 	JTextField inputPort;
 
-	public ConnectConf(JFrame frame,String ip,int port) {
+	public ConnectConf(JFrame frame,String ip, int port) {
 		super(frame, true);
 		this.userInputIp = ip;
 		this.userInputPort = port;
@@ -45,7 +45,7 @@ public class ConnectConf extends JDialog {
 	private void jbInit() throws Exception {
 		this.setSize(new Dimension(300, 130));
 		this.setTitle("network configuration");
-		message.setText("Please enter the server address:");
+		message.setText("Specify ip:");
 		inputIp = new JTextField(10);
 		inputIp.setText(userInputIp);
 		inputPort = new JTextField(4);
@@ -56,7 +56,7 @@ public class ConnectConf extends JDialog {
 		panelUserConf.setLayout(new GridLayout(2,2,1,1));
 		panelUserConf.add(message);
 		panelUserConf.add(inputIp);
-		panelUserConf.add(new JLabel("Please specify the port number:"));
+		panelUserConf.add(new JLabel("Specify port #:"));
 		panelUserConf.add(inputPort);
 
 		panelSave.add(new Label("              "));
@@ -75,15 +75,15 @@ public class ConnectConf extends JDialog {
 			new ActionListener() {
 				public void actionPerformed (ActionEvent a) {
 					int savePort;
-					String inputIP;
-					//check if port valid or not
+					//String inputIP;
+					
+					//got ip from user's input
 					try{
 						userInputIp = "" + InetAddress.getByName(inputIp.getText());
 						userInputIp = userInputIp.substring(1);
 					}
 					catch(UnknownHostException e){
-						DLGINFO.setText(
-							"                              Wrong IP address!");
+						DLGINFO.setText(" Wrong IP address!");
 
 						return;
 					}
@@ -94,7 +94,7 @@ public class ConnectConf extends JDialog {
 						savePort = Integer.parseInt(inputPort.getText());
 
 						if(savePort<1 || savePort>65535){
-							DLGINFO.setText("               must be number between 0 and 65535!");
+							DLGINFO.setText("  must be number between 0 and 65535!");
 							inputPort.setText("");
 							return;
 						}
@@ -102,19 +102,19 @@ public class ConnectConf extends JDialog {
 						dispose();
 					}
 					catch(NumberFormatException e){
-						DLGINFO.setText("                port number must be an integer!");
+						DLGINFO.setText(" port number must be an integer!");
 						inputPort.setText("");
 						return;
 					}
 				}
 			}
-		);
+		);//end actionlistener
 
 		//event handler for closing window
 		this.addWindowListener(
 			new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
-					DLGINFO.setText("                  default config is  127.0.0.1:8888");
+					//DLGINFO.setText("  default config is  127.0.0.1:8888");
 				}
 			}
 		);
@@ -123,7 +123,7 @@ public class ConnectConf extends JDialog {
 		cancel.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					DLGINFO.setText("                  default config is 127.0.0.1:8888");
+					//DLGINFO.setText(" default config is 127.0.0.1:8888");
 					dispose();
 				}
 			}

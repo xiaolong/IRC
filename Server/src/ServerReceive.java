@@ -35,6 +35,7 @@ public class ServerReceive extends Thread {
 			try{
 				String type = (String)client.input.readObject();
 				
+				/* --if the received is chat message-- */
 				if(type.equalsIgnoreCase("chatMsg")){
 					
 					//read the subsequent objects if it's a chatMsg...
@@ -56,11 +57,14 @@ public class ServerReceive extends Thread {
 					
 					textarea.append(msg);
 					
+					//if 'all', forward to all user
 					if(toSomebody.equalsIgnoreCase("all")){
 						sendToAll(msg);//send to all
 					}
+					//else forward to only one specific user
 					else{
 						try{
+						//show message in the sender's own window
 							client.output.writeObject("chatMsg");
 							client.output.flush();
 							client.output.writeObject(msg);
@@ -70,8 +74,8 @@ public class ServerReceive extends Thread {
 							//System.out.println("###"+e);
 						}
 						
-						Node node = userLinkList.findUser(toSomebody);
-						
+						//write message to the receiver's stream
+						Node node = userLinkList.findUser(toSomebody);						
 						if(node != null){
 							node.output.writeObject("chatMsg"); 
 							node.output.flush();
@@ -80,40 +84,28 @@ public class ServerReceive extends Thread {
 						}
 					}
 				}
+				
+				/* --if the received is a leaving notice -- */
 				else if(type.equalsIgnoreCase("userLeft")){
 					userLinkList.delUser(client.username);
-					//Node node = userLinkList.findUser(client.username);
-					//userLinkList.delUser(node);
 					
 					String msg = "user " + client.username + " has left\n";
-					int count = userLinkList.getCount();
 
 					combobox.removeAllItems();
 					combobox.addItem("all");
-					/*
-					int i = 0;
-					while(i < count){
-						Node node = userLinkList.findUser(i);
-						if(node == null) {
-							i ++;
-							continue;
-						} 		
-						combobox.addItem(node.username);
-						i++;
-					} */
+					
+					//load updated list into combobox
 					Node n= userLinkList.root;
 					while(n.next != null){
 						combobox.addItem(n.next.username);
 						n=n.next;
-					}
-					
+					}					
 					combobox.setSelectedIndex(0);
-
 					textarea.append(msg);
 					textfield.setText("active user:" + userLinkList.getCount() + "users\n");
 					
 					sendToAll(msg);//send message to all
-					sendUserList();//resend user list to update
+					sendUserList();//re-send user list to update
 					
 					break;
 				}
@@ -149,9 +141,8 @@ public class ServerReceive extends Thread {
 	 * send updated user list to all active users
 	 */
 	public void sendUserList(){
-		String userlist = "";
-		
-		//package all the usernames into a long string
+		//package all the usernames into a long string		
+		String userlist = "";		
 		Node iter=userLinkList.root;
 		while(iter.next!=null){
 			userlist+=iter.next.username +'\n';

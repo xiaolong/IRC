@@ -79,7 +79,7 @@ public class ChatServer extends JFrame implements ActionListener{
 		//prog icon
 		icon = getImage("icon.gif");
 		this.setIconImage(icon); //set icon
-		show();
+		this.setVisible(true);
 
 		//hot key'V'
 		serviceMenu.setMnemonic('V');
@@ -275,7 +275,7 @@ public class ChatServer extends JFrame implements ActionListener{
 		else if (obj == portSet || obj == portItem) { //port setting
 			//pop up port setting window
 			PortConf portConf = new PortConf(this);
-			portConf.show();
+			portConf.setVisible(true);
 		}
 		else if (obj == exitButton || obj == exitItem) { //exit prog
 			int j=JOptionPane.showConfirmDialog(
@@ -290,9 +290,9 @@ public class ChatServer extends JFrame implements ActionListener{
 		else if (obj == helpItem) { //help on menu bar
 			//pop up help dialogue
 			Help helpDialog = new Help(this);
-			helpDialog.show();
+			helpDialog.setVisible(true);
 		}
-		else if (obj == sysMessage || obj == sysMessageButton) { //·¢ËÍÏµÍ³ÏûÏ¢
+		else if (obj == sysMessage || obj == sysMessageButton) { 
 			sendSystemMessage();
 		}
 	}
@@ -398,7 +398,7 @@ public class ChatServer extends JFrame implements ActionListener{
 			node= node.next;
 		}
 
-		sysMessage.setText("");
+		sysMessage.setText("");//clear the input box
 	}
 
 	/**

@@ -64,11 +64,11 @@ public class ChatClient extends JFrame implements ActionListener{
 	JButton exitButton;//exit prog
 
 	//decide the frame size
-	Dimension faceSize = new Dimension(500, 700);
+	Dimension faceSize = new Dimension(500, 600);
 
 	JPanel downPanel ;
-	GridBagLayout girdBag;
-	GridBagConstraints girdBagCon;
+	GridBagLayout gridBag;
+	GridBagConstraints gridBagCon;
 	
 	public ChatClient(){//CTOR..
 		init();//initialization, construct the window interface
@@ -87,8 +87,9 @@ public class ChatClient extends JFrame implements ActionListener{
 		this.setTitle("IRC Client"); //prog title
 
 		//icon
-		icon = getImage("icon.gif");
+		/*icon = getImage("icon.gif");
 		this.setIconImage(icon); //set icon
+		*/
 		this.setVisible(true);//bring the window up!!
 
 		//hot key'V'
@@ -224,90 +225,89 @@ public class ChatClient extends JFrame implements ActionListener{
 		sendToLabel = new JLabel("Send to:");
 		express = new JLabel("         face:   ");
 		messageLabel = new JLabel("Send MSG:");
-		downPanel = new JPanel();
-		girdBag = new GridBagLayout();
-		downPanel.setLayout(girdBag);
+		gridBag = new GridBagLayout();
+		downPanel = new JPanel(gridBag);		
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 0;
-		girdBagCon.gridwidth = 5;
-		girdBagCon.gridheight = 2;
-		girdBagCon.ipadx = 5;
-		girdBagCon.ipady = 5;
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 0;
+		gridBagCon.gridwidth = 5;
+		gridBagCon.gridheight = 2;
+		gridBagCon.ipadx = 5;
+		gridBagCon.ipady = 5;
 		JLabel none = new JLabel("    ");
-		girdBag.setConstraints(none,girdBagCon);
+		gridBag.setConstraints(none,gridBagCon);
 		downPanel.add(none);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 2;
-		girdBagCon.insets = new Insets(1,0,0,0);
-		//girdBagCon.ipadx = 5;
-		//girdBagCon.ipady = 5;
-		girdBag.setConstraints(sendToLabel,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 2;
+		gridBagCon.insets = new Insets(1,0,0,0);
+		//gridBagCon.ipadx = 5;
+		//gridBagCon.ipady = 5;
+		gridBag.setConstraints(sendToLabel,gridBagCon);
 		downPanel.add(sendToLabel);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx =1;
-		girdBagCon.gridy = 2;
-		girdBagCon.anchor = GridBagConstraints.LINE_START;
-		girdBag.setConstraints(combobox,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx =1;
+		gridBagCon.gridy = 2;
+		gridBagCon.anchor = GridBagConstraints.LINE_START;
+		gridBag.setConstraints(combobox,gridBagCon);
 		downPanel.add(combobox);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx =2;
-		girdBagCon.gridy = 2;
-		girdBagCon.anchor = GridBagConstraints.LINE_END;
-		girdBag.setConstraints(express,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx =2;
+		gridBagCon.gridy = 2;
+		gridBagCon.anchor = GridBagConstraints.LINE_END;
+		gridBag.setConstraints(express,gridBagCon);
 		downPanel.add(express);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 3;
-		girdBagCon.gridy = 2;
-		girdBagCon.anchor = GridBagConstraints.LINE_START;
-		//girdBagCon.insets = new Insets(1,0,0,0);
-		//girdBagCon.ipadx = 5;
-		//girdBagCon.ipady = 5;
-		girdBag.setConstraints(actionlist,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 3;
+		gridBagCon.gridy = 2;
+		gridBagCon.anchor = GridBagConstraints.LINE_START;
+		//gridBagCon.insets = new Insets(1,0,0,0);
+		//gridBagCon.ipadx = 5;
+		//gridBagCon.ipady = 5;
+		gridBag.setConstraints(actionlist,gridBagCon);
 		downPanel.add(actionlist);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 4;
-		girdBagCon.gridy = 2;
-		girdBagCon.insets = new Insets(1,0,0,0);
-		//girdBagCon.ipadx = 5;
-		//girdBagCon.ipady = 5;
-		girdBag.setConstraints(checkbox,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 4;
+		gridBagCon.gridy = 2;
+		gridBagCon.insets = new Insets(1,0,0,0);
+		//gridBagCon.ipadx = 5;
+		//gridBagCon.ipady = 5;
+		gridBag.setConstraints(checkbox,gridBagCon);
 		downPanel.add(checkbox);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 3;
-		girdBag.setConstraints(messageLabel,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 3;
+		gridBag.setConstraints(messageLabel,gridBagCon);
 		downPanel.add(messageLabel);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 1;
-		girdBagCon.gridy = 3;
-		girdBagCon.gridwidth = 3;
-		girdBagCon.gridheight = 1;
-		girdBag.setConstraints(clientMessage,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 1;
+		gridBagCon.gridy = 3;
+		gridBagCon.gridwidth = 3;
+		gridBagCon.gridheight = 1;
+		gridBag.setConstraints(clientMessage,gridBagCon);
 		downPanel.add(clientMessage);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 4;
-		girdBagCon.gridy = 3;
-		girdBag.setConstraints(clientMessageButton,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 4;
+		gridBagCon.gridy = 3;
+		gridBag.setConstraints(clientMessageButton,gridBagCon);
 		downPanel.add(clientMessageButton);
 
 		showStatus = new JTextField(35);
 		showStatus.setEditable(false);
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 5;
-		girdBagCon.gridwidth = 5;
-		girdBag.setConstraints(showStatus,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 5;//0 will make it just below textArea
+		gridBagCon.gridwidth = 5;
+		gridBag.setConstraints(showStatus,gridBagCon);
 		downPanel.add(showStatus);
 
 		contentPane.add(messageScrollPane,BorderLayout.CENTER);
@@ -486,6 +486,7 @@ public class ChatClient extends JFrame implements ActionListener{
 	/**
 	 * get image for specified filename
 	 */
+	/*
 	Image getImage(String filename) {
 		URLClassLoader urlLoader = (URLClassLoader)this.getClass().
 			getClassLoader();
@@ -508,6 +509,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		return image;
 	}
 
+	*/
 	public static void main(String[] args) {
 		
 		ChatClient app = new ChatClient();

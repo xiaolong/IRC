@@ -52,8 +52,8 @@ public class ChatServer extends JFrame implements ActionListener{
 	ServerListen listenThread;
 
 	JPanel downPanel ;
-	GridBagLayout girdBag;
-	GridBagConstraints girdBagCon;
+	GridBagLayout gridBag;
+	GridBagConstraints gridBagCon;
 
 
 	/**
@@ -186,59 +186,59 @@ public class ChatServer extends JFrame implements ActionListener{
 		sendToLabel = new JLabel("Send to:");
 		messageLabel = new JLabel("Send msg:");
 		downPanel = new JPanel();
-		girdBag = new GridBagLayout();
-		downPanel.setLayout(girdBag);
+		gridBag = new GridBagLayout();
+		downPanel.setLayout(gridBag);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 0;
-		girdBagCon.gridwidth = 3;
-		girdBagCon.gridheight = 2;
-		girdBagCon.ipadx = 5;
-		girdBagCon.ipady = 5;
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 0;
+		gridBagCon.gridwidth = 3;
+		gridBagCon.gridheight = 2;
+		gridBagCon.ipadx = 5;
+		gridBagCon.ipady = 5;
 		JLabel none = new JLabel("    ");
-		girdBag.setConstraints(none,girdBagCon);
+		gridBag.setConstraints(none,gridBagCon);
 		downPanel.add(none);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 2;
-		girdBagCon.insets = new Insets(1,0,0,0);
-		girdBagCon.ipadx = 5;
-		girdBagCon.ipady = 5;
-		girdBag.setConstraints(sendToLabel,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 2;
+		gridBagCon.insets = new Insets(1,0,0,0);
+		gridBagCon.ipadx = 5;
+		gridBagCon.ipady = 5;
+		gridBag.setConstraints(sendToLabel,gridBagCon);
 		downPanel.add(sendToLabel);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx =1;
-		girdBagCon.gridy = 2;
-		girdBagCon.anchor = GridBagConstraints.LINE_START;
-		girdBag.setConstraints(combobox,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx =1;
+		gridBagCon.gridy = 2;
+		gridBagCon.anchor = GridBagConstraints.LINE_START;
+		gridBag.setConstraints(combobox,gridBagCon);
 		downPanel.add(combobox);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 3;
-		girdBag.setConstraints(messageLabel,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 3;
+		gridBag.setConstraints(messageLabel,gridBagCon);
 		downPanel.add(messageLabel);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 1;
-		girdBagCon.gridy = 3;
-		girdBag.setConstraints(sysMessage,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 1;
+		gridBagCon.gridy = 3;
+		gridBag.setConstraints(sysMessage,gridBagCon);
 		downPanel.add(sysMessage);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 2;
-		girdBagCon.gridy = 3;
-		girdBag.setConstraints(sysMessageButton,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 2;
+		gridBagCon.gridy = 3;
+		gridBag.setConstraints(sysMessageButton,gridBagCon);
 		downPanel.add(sysMessageButton);
 
-		girdBagCon = new GridBagConstraints();
-		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 4;
-		girdBagCon.gridwidth = 3;
-		girdBag.setConstraints(showStatus,girdBagCon);
+		gridBagCon = new GridBagConstraints();
+		gridBagCon.gridx = 0;
+		gridBagCon.gridy = 4;
+		gridBagCon.gridwidth = 3;
+		gridBag.setConstraints(showStatus,gridBagCon);
 		downPanel.add(showStatus);
 
 		contentPane.add(messageScrollPane,BorderLayout.CENTER);
